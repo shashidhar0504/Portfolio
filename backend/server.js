@@ -11,10 +11,25 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
 
+const allowedOrigins = CLIENT_URL.split(",").map((url) => url.trim());
+
 // --- Middleware ---
 app.use(
   cors({
-    origin: CLIENT_URL.split(",").map((url) => url.trim()),
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps, curl, or local dev tools)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.includes(origin) || allowedOrigins.includes("*") || allowedOrigins.includes(origin + "/")) {
+        callback(null, true);
+      } else {
+        console.warn(`⚠️ CORS Blocked: Request from unauthorized origin: "${origin}"`);
+        console.warn(`   Allowed origins in configuration:`, allowedOrigins);
+        // Fail gracefully with a CORS error message
+        callback(new Error(`CORS blocked: "${origin}" is not authorized.`));
+      }
+    },
+    credentials: true,
   })
 );
 app.use(express.json({ limit: "20kb" }));
