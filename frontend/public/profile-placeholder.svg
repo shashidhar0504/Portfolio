@@ -1,0 +1,18 @@
+<svg width="600" height="750" viewBox="0 0 600 750" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+    <linearGradient id="circle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#60A5FA"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="750" fill="url(#bg)"/>
+  <circle cx="300" cy="320" r="130" fill="url(#circle)" opacity="0.15"/>
+  <circle cx="300" cy="300" r="90" fill="url(#circle)"/>
+  <text x="300" y="320" font-family="Poppins, sans-serif" font-size="64" font-weight="700" fill="#FFFFFF" text-anchor="middle">SB</text>
+  <text x="300" y="560" font-family="Inter, sans-serif" font-size="20" fill="#64748B" text-anchor="middle">Replace with your photo</text>
+  <text x="300" y="590" font-family="Inter, sans-serif" font-size="14" fill="#94A3B8" text-anchor="middle">public/profile-placeholder.svg</text>
+</svg>
